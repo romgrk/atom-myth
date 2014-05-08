@@ -1,4 +1,4 @@
-# atom-jellybeans theme
+# jellybeans theme
 
 A short description of your theme.
 

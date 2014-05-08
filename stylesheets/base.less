@@ -71,24 +71,27 @@
 
 .entity {
   &.name.type {
-    color: @light-orange;
-    text-decoration: underline;
+    color: @very-light-gray;
   }
 
   &.other.inherited-class {
-    color: @green;
+    color: @very-light-gray;
   }
 }
 
 .keyword {
-  color: @purple;
+  color: @blue; //This is gonna be light-blue
 
   &.control {
-    color: @purple;
+    color: darken(@purple, 15%);
   }
 
   &.operator {
     color: @syntax-text-color;
+  }
+
+  &.operator.class {
+    color: @blue;
   }
 
   &.other.special-method {
@@ -101,18 +104,22 @@
 }
 
 .storage {
-  color: @purple;
+  color: @blue;
+
+  &.modifier {
+    color: @orange;
+  }
 }
 
 .constant {
-  color: @orange;
+  color: @red;
 
   &.character.escape {
     color: @cyan;
   }
 
   &.numeric {
-    color: @orange;
+    color: @red;
   }
 
   &.other.color {
@@ -125,7 +132,7 @@
 }
 
 .variable {
-  color: @red;
+  color: @purple;
 
   &.interpolation {
     color: darken(@red, 10%);
@@ -164,8 +171,11 @@
       color: @light-gray;
     }
 
+    &.variable {
+      color: @purple;
+    }
+
     &.string,
-    &.variable,
     &.parameters,
     &.array {
       color: @syntax-text-color;
@@ -188,7 +198,7 @@
   }
 
   &.section.embedded {
-    color: darken(@red, 10%);
+    color: darken(@blue, 5%);
   }
 
 }
@@ -199,7 +209,7 @@
   }
 
   &.function  {
-    color: @cyan;
+    color: @light-orange;
 
     &.any-method {
       color: @blue;
@@ -209,11 +219,11 @@
 
 .entity {
   &.name.function {
-    color: @blue;
+    color: @very-light-gray;
   }
 
   &.name.class, &.name.type.class {
-    color: @light-orange;
+    color: @very-light-gray;
   }
 
   &.name.section {
