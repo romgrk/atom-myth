@@ -81,13 +81,17 @@
   &.other.inherited-class {
     color: @very-light-gray;
   }
+
+  &.name.type.class {
+    color: @light-orange;
+  }
 }
 
 .keyword {
   color: @blue; //This is gonna be light-blue
 
   &.control {
-    color: darken(@purple, 15%);
+    color: @purple;
   }
 
   &.operator {
@@ -108,10 +112,10 @@
 }
 
 .storage {
-  color: @blue;
+  color: @purple;
 
   &.modifier {
-    color: @orange;
+    color: @blue;
   }
 }
 
@@ -133,10 +137,18 @@
   &.other.symbol {
     color: @green;
   }
+
+  &.language {
+    color: @light-orange;
+  }
+
+  &.other.placeholder {
+    color: @green;
+  }
 }
 
 .variable {
-  color: @purple;
+  color: lighten(@purple, 5%);
 
   &.interpolation {
     color: darken(@red, 10%);
@@ -226,7 +238,11 @@
     color: @very-light-gray;
   }
 
-  &.name.class, &.name.type.class {
+  &.name.type.class {
+    color: @light-orange;
+  }
+
+  &.name.class {
     color: @very-light-gray;
   }
 
