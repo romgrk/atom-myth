@@ -1,7 +1,7 @@
 {
   "name": "jellybeans",
   "theme": "syntax",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Jellybeans.vim like syntax theme",
   "repository": "https://github.com/javaguirre/atom-jellybeans",
   "license": "MIT",
