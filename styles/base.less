@@ -3,11 +3,6 @@
 atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
-}
-
-atom-text-editor {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
 
   .wrap-guide {
     background-color: @syntax-wrap-guide-color;
@@ -88,7 +83,7 @@ atom-text-editor .search-results .marker.current-result .region {
 }
 
 .keyword {
-  color: @blue; //This is gonna be light-blue
+  color: @blue;
 
   &.control {
     color: @purple;
@@ -339,4 +334,8 @@ atom-text-editor .search-results .marker.current-result .region {
 
 atom-text-editor[mini] .scroll-view {
   padding-left: 1px;
+}
+
+.highlight .region {
+    background-color: @syntax-gutter-background-color-selected;
 }
