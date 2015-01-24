@@ -1,3 +1,6 @@
+## 1.3.0 - Small changes
+* Fix pre-1.0 styles for line-number sidebar
+
 ## 1.1.0 - Small changes
 * Selection style fix
 
