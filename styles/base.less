@@ -7,6 +7,7 @@
 @very-dark-gray:  #0d1f21;
 
 @cyan:         #8abeb7;
+@gray-blue:    #81a2be;
 @blue:         #599eff;
 @light-blue:   #8fbfdc;
 @light-purple: #b99fc7;
@@ -41,17 +42,17 @@
 @syntax-result-marker-color-selected: white;
 
 // Gutter colors
-
 @syntax-gutter-text-color:                #606060;
 @syntax-gutter-text-color-selected:       #c3c3c3;
 @syntax-gutter-background-color:          #1f1f1f;
 @syntax-gutter-background-color-selected: #202020;
 
 // Cursor line
-@syntax-cursor-line-background-color:     #1f1f1f;
+@syntax-cursor-line-background-color: #282828;
+@cursor-line-background:              #282828;
 
 // Gap between the gutter and the editor
-@syntax-gutter-gap: 2px;
+@syntax-gutter-gap: 4px;
 
 // For git diff info. i.e. in the gutter
 @syntax-color-renamed:  @blue;
@@ -74,26 +75,23 @@ atom-text-editor::shadow {
     color: @syntax-indent-guide-color;
   }
 
+  .cursor {
+    color: @syntax-cursor-color;
+  }
+
   .lines {
     margin-left: @syntax-gutter-gap;
   }
 
   .line.cursor-line {
-    background-color: lighten(@syntax-gutter-background-color-selected, 3%);
+    background-color: @cursor-line-background;
     &::before {
       position: absolute;
       top: 0;
-      left: -@syntax-gutter-gap;
+      left: -(@syntax-gutter-gap);
       width: @syntax-gutter-gap;
       content: " ";
-
-      background-color: #282828;
-      // height: 1em;
     }
-  }
-
-  .cursor {
-    color: @syntax-cursor-color;
   }
 
   .gutter {
@@ -105,28 +103,30 @@ atom-text-editor::shadow {
       padding: 0 .5em;
       color:            @syntax-gutter-text-color;
       background-color: @syntax-gutter-background-color;
+
       &.cursor-line {
         font-weight:      bold;
         color:            @syntax-gutter-text-color-selected;
-        background-color: @syntax-cursor-line-background-color;
+        background-color: lighten(@syntax-cursor-line-background-color, 3%);
       }
-      &.folded {
-        color: white;
-        background-color: #0e14cd;
+      &.cursor-line-no-selection {
+        font-weight:      bold;
+        color:            @syntax-gutter-text-color-selected;
+        background-color: lighten(@cursor-line-background, 3%);
+      }
+      &.folded, &:after {
+        color:            @syntax-gutter-text-color-selected;
+        background-color: @syntax-gutter-background-color-selected;
       }
 
       .icon-right {display: none;}
     }
   }
-  //   &.cursor-line-no-selection {
-  //     color: @syntax-gutter-text-color-selected;
-  //   }
 
-  .gutter .line-number.folded,
-  .gutter .line-number:after,
   .fold-marker:after {
-    font-weight: bold;
-    color: @vivid-red;
+    // font-weight:      bold;
+    color:            @syntax-gutter-text-color;
+    background-color: lighten(@syntax-cursor-line-background-color, 4%);
   }
 
   .selection .region {
