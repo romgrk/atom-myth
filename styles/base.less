@@ -41,17 +41,18 @@
 @syntax-result-marker-color:          @light-gray;
 @syntax-result-marker-color-selected: white;
 
+// Cursor line
+@cursor-line-background:   #282828;
+
 // Gutter colors
+@gutter-cursor-color:      @light-gray;
+@gutter-cursor-background: lighten(@cursor-line-background, 8%);
+
 @syntax-gutter-text-color:                #606060;
 @syntax-gutter-text-color-selected:       #c3c3c3;
 @syntax-gutter-background-color:          #1f1f1f;
 @syntax-gutter-background-color-selected: #202020;
 
-// Cursor line
-@syntax-cursor-line-background-color: #282828;
-
-@cursor-line-background:   #282828;
-@cursor-gutter-background: lighten(@cursor-line-background, 5%);
 
 // Gap between the gutter and the editor
 @syntax-gutter-gap: 4px;
@@ -111,18 +112,22 @@ atom-text-editor::shadow {
         font-weight:      bold;
         color:            @syntax-gutter-text-color-selected;
         background-color: @syntax-gutter-background-color;
-        // color:            @syntax-gutter-text-color-selected;
-        // background-color: lighten(@syntax-cursor-line-background-color, 3%);
       }
       &.cursor-line-no-selection {
         font-weight:      bold;
-        color:            @syntax-text-color !important;
-        background-color: @cursor-gutter-background;
+        color:            @syntax-gutter-text-color-selected;
+        // background-color: @gutter-cursor-background;
       }
       &.folded, &:after {
         font-weight:      bold;
-        color:            @syntax-gutter-text-color-selected;
-        background-color: @cursor-gutter-background;
+        // color:            lighten(@syntax-gutter-text-color, 10%);
+        color:            lighten(@syntax-gutter-text-color, 40%);
+        background-color: darken(@gutter-cursor-background, 3%);
+      }
+      &.cursor-line.folded {
+        font-weight:      bold;
+        color:            @gutter-cursor-background;
+        background-color: darken(@syntax-text-color, 40%);
       }
 
       .icon-right {display: none;}
@@ -132,7 +137,7 @@ atom-text-editor::shadow {
   .fold-marker:after {
     // font-weight:      bold;
     color:            @syntax-gutter-text-color;
-    background-color: lighten(@syntax-cursor-line-background-color, 4%);
+    background-color: lighten(@cursor-line-background, 4%);
   }
 
   .selection .region {
