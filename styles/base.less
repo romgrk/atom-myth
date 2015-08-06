@@ -137,10 +137,21 @@ atom-text-editor::shadow {
     }
   }
 
+  .fold-marker::before {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 1em;
+
+    content: '';
+    color: @syntax-text-color;
+    background-color: fade(white, 10%);
+  }
   .fold-marker:after {
-    font-weight:      bold;
-    color:            @syntax-gutter-text-color;
-    background-color: lighten(@cursor-line-background, 4%);
+    // font-weight:      bold;
+    // color:            @syntax-text-color;
+    // background-color: lighten(@cursor-line-background, 4%);
   }
 
   .selection .region {
