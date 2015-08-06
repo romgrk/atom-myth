@@ -2,7 +2,7 @@
 
 @very-light-gray: #f3efe8;
 @light-gray:      #969896;
-@gray:            #373b41;
+@gray:            #37363A;
 @dark-gray:       #282a2e;
 @very-dark-gray:  #0d1f21;
 
@@ -49,7 +49,9 @@
 
 // Cursor line
 @syntax-cursor-line-background-color: #282828;
-@cursor-line-background:              #282828;
+
+@cursor-line-background:   #282828;
+@cursor-gutter-background: lighten(@cursor-line-background, 5%);
 
 // Gap between the gutter and the editor
 @syntax-gutter-gap: 4px;
@@ -91,6 +93,7 @@ atom-text-editor::shadow {
       left: -(@syntax-gutter-gap);
       width: @syntax-gutter-gap;
       content: " ";
+      background-color: @cursor-line-background;
     }
   }
 
@@ -107,16 +110,19 @@ atom-text-editor::shadow {
       &.cursor-line {
         font-weight:      bold;
         color:            @syntax-gutter-text-color-selected;
-        background-color: lighten(@syntax-cursor-line-background-color, 3%);
+        background-color: @syntax-gutter-background-color;
+        // color:            @syntax-gutter-text-color-selected;
+        // background-color: lighten(@syntax-cursor-line-background-color, 3%);
       }
       &.cursor-line-no-selection {
         font-weight:      bold;
-        color:            @syntax-gutter-text-color-selected;
-        background-color: lighten(@cursor-line-background, 3%);
+        color:            @syntax-text-color !important;
+        background-color: @cursor-gutter-background;
       }
       &.folded, &:after {
+        font-weight:      bold;
         color:            @syntax-gutter-text-color-selected;
-        background-color: @syntax-gutter-background-color-selected;
+        background-color: @cursor-gutter-background;
       }
 
       .icon-right {display: none;}
@@ -130,6 +136,7 @@ atom-text-editor::shadow {
   }
 
   .selection .region {
+    left: -(@syntax-gutter-gap);
     background-color: @syntax-selection-color;
   }
 
