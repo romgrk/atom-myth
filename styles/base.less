@@ -47,6 +47,9 @@
 @syntax-gutter-background-color:          #1f1f1f;
 @syntax-gutter-background-color-selected: #202020;
 
+
+@syntax-cursor-line-background-color:     #1f1f1f;
+
 // For git diff info. i.e. in the gutter
 @syntax-color-renamed:  @blue;
 @syntax-color-added:    @green;
@@ -54,49 +57,36 @@
 @syntax-color-removed:  @red;
 
 atom-text-editor {
+  color:            @syntax-text-color;
   background-color: @syntax-background-color;
-  color: @syntax-text-color;
 }
 
 atom-text-editor::shadow {
 
-  .wrap-guide {
-    background-color: @syntax-wrap-guide-color;
-  }
+  .wrap-guide { background-color: @syntax-wrap-guide-color; }
 
-  .indent-guide {
-    color: @syntax-indent-guide-color;
-  }
+  .indent-guide { color: @syntax-indent-guide-color; }
 
-  .invisible-character {
-    color: @syntax-invisible-character-color;
-  }
+  .invisible-character { color: @syntax-invisible-character-color; }
 
   .gutter {
+    color:            @syntax-gutter-text-color;
     background-color: @syntax-gutter-background-color;
-    color: @syntax-gutter-text-color;
 
     .line-number {
-        background-color: @syntax-gutter-background-color;
-        color: @syntax-gutter-text-color;
-        &.cursor-line {
-            font-weight: bold;
-            color: #c3c3c3;
-            background-color: #282828;
-        }
-        opacity: 1;
+      color:            @syntax-gutter-text-color;
+      background-color: @syntax-gutter-background-color;
+      &.cursor-line {
+        font-weight:      bold;
+        color:            @syntax-gutter-text-color-selected;
+        background-color: @syntax-cursor-line-background-color;
+      }
+      opacity: 1;
     }
-    // .line-number {
-    //   &.cursor-line {
-    //     background-color: @syntax-gutter-background-color-selected;
-    //     color: @syntax-gutter-text-color-selected;
-    //   }
-    //
-    //   &.cursor-line-no-selection {
-    //     color: @syntax-gutter-text-color-selected;
-    //   }
-    // }
   }
+  //   &.cursor-line-no-selection {
+  //     color: @syntax-gutter-text-color-selected;
+  //   }
 
   .gutter .line-number.folded,
   .gutter .line-number:after,
