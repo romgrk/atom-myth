@@ -47,8 +47,11 @@
 @syntax-gutter-background-color:          #1f1f1f;
 @syntax-gutter-background-color-selected: #202020;
 
-
+// Cursor line
 @syntax-cursor-line-background-color:     #1f1f1f;
+
+// Gap between the gutter and the editor
+@syntax-gutter-gap: 2px;
 
 // For git diff info. i.e. in the gutter
 @syntax-color-renamed:  @blue;
@@ -63,17 +66,43 @@ atom-text-editor {
 
 atom-text-editor::shadow {
 
-  .wrap-guide { background-color: @syntax-wrap-guide-color; }
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
 
-  .indent-guide { color: @syntax-indent-guide-color; }
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
 
-  .invisible-character { color: @syntax-invisible-character-color; }
+  .lines {
+    margin-left: @syntax-gutter-gap;
+  }
+
+  .line.cursor-line {
+    background-color: lighten(@syntax-gutter-background-color-selected, 3%);
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -@syntax-gutter-gap;
+      width: @syntax-gutter-gap;
+      content: " ";
+
+      background-color: #282828;
+      // height: 1em;
+    }
+  }
+
+  .cursor {
+    color: @syntax-cursor-color;
+  }
 
   .gutter {
     color:            @syntax-gutter-text-color;
     background-color: @syntax-gutter-background-color;
 
     .line-number {
+      opacity: 1;
+      padding: 0 .5em;
       color:            @syntax-gutter-text-color;
       background-color: @syntax-gutter-background-color;
       &.cursor-line {
@@ -81,7 +110,12 @@ atom-text-editor::shadow {
         color:            @syntax-gutter-text-color-selected;
         background-color: @syntax-cursor-line-background-color;
       }
-      opacity: 1;
+      &.folded {
+        color: white;
+        background-color: #0e14cd;
+      }
+
+      .icon-right {display: none;}
     }
   }
   //   &.cursor-line-no-selection {
@@ -95,17 +129,15 @@ atom-text-editor::shadow {
     color: @vivid-red;
   }
 
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
+
   .invisible {
     color: @syntax-text-color;
   }
 
-  .cursor {
-    color: @syntax-cursor-color;
-  }
-
-  .selection .region {
-    background-color: @syntax-selection-color;
-  }
+  .invisible-character { color: @syntax-invisible-character-color; }
 
 }
 
@@ -116,10 +148,6 @@ atom-text-editor .search-results .marker .region {
 
 atom-text-editor .search-results .marker.current-result .region {
   border: 1px solid @syntax-result-marker-color-selected;
-}
-
-.line.cursor-line {
-  background-color: lighten(@syntax-gutter-background-color-selected, 3%);
 }
 
 .comment {
